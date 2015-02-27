@@ -25,15 +25,9 @@ function output($data){
 	exit;
 }
 
-function q_comment_ajax_error_duplicate(){
-	cmt_die('COMMENT_DUPLICATE');
-}
-add_action( 'comment_duplicate_trigger', 'q_comment_ajax_error_duplicate' );
+add_action( 'comment_duplicate_trigger', create_function('', 'cmt_die("COMMENT_DUPLICATE");') );
 
-function q_comment_ajax_error_flood(){
-	cmt_die('COMMENT_FLOOD');
-}
-add_action( 'comment_flood_trigger', 'q_comment_ajax_error_flood' );
+add_action( 'comment_flood_trigger', create_function('', 'cmt_die("COMMENT_FLOOD");') );
 
 nocache_headers();
 
